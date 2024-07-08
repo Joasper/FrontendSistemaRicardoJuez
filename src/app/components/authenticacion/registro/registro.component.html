@@ -1,0 +1,30 @@
+<!-- Registro -->
+<div class="flex justify-center items-center h-screen ">
+    <div class="w-full max-w-md">
+      <div class="bg-[#1f3133] rounded-lg shadow-lg p-8 m-4">
+        <h2 class="text-2xl font-bold text-center text-white mb-6">Registro</h2>
+        <form class="space-y-4">
+          <div>
+            <label for="email" class="block text-white">Nombre Completo</label>
+            <input type="email" id="email" [(ngModel)]="name" name="email" placeholder="usuario"  class="w-full text-black mt-1 p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="email" class="block text-white">Correo</label>
+            <input type="email" id="email" [(ngModel)]="document" name="email" placeholder="usuario"  class="w-full text-black mt-1 p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="password" class="block text-white">Contraseña</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Contraseña" class="w-full mt-1 text-black p-2 border border-gray-300 rounded" required>
+          </div>
+          <div class="">
+            <button type="submit" (click)="register()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear Cuenta</button>
+          </div>
+          <!-- Registro -->
+          <div class="text-center">
+            <a class="text-white" [routerLink]="[ '/public/authenticacion/login']" >¿Ya tienes cuenta? Incia sesion</a>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+   

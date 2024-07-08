@@ -1,0 +1,218 @@
+<mat-tab-group #tabGroup>
+    <mat-tab label="Datos del Curso" class="p-2">
+
+        <!-- Formulario para crear curso -->
+        <form class="w-full max-w-l p-3">
+            <div class="flex gap-4 flex-col w-full -mx-3 mb-6">
+                <div class="flex items-end gap-3  mb-6">
+                    <div class=" mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                            for="grid-first-name">
+                            Imagen
+                        </label>
+                        <img [src]="url" class="w-32 h-32" alt="Imagen del curso">
+                    </div>
+                    <!--Boton de carar imagen-->
+                    <label for="uploadFile1"
+                        class="flex bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-3 outline-none rounded w-max cursor-pointer  font-[sans-serif]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 mr-2 fill-white inline" viewBox="0 0 32 32">
+                            <path
+                                d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                                data-original="#000000" />
+                            <path
+                                d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                                data-original="#000000" />
+                        </svg>
+                        Upload
+                        <button (click)="inputFile.click()" type="button" id='uploadFile1' class="hidden"></button>
+                    </label>
+                </div>
+
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Nombre
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="curso.name"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-first-name" type="text" placeholder="Nombre" name="Nombre">
+                </div>
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Descripcion
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="curso.description"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-first-name" type="text" placeholder="Descripcion" name="Descripcion">
+                </div>
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Precio
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="curso.price"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-first-name" type="number" placeholder="Precio" name="Precio">
+                </div>
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Modulos
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="curso.cantLeasson"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-first-name" type="number" placeholder="Cantidad de Modulos" name="Modulos">
+                </div>
+                <!-- <div [hidden]="categoria.nombre.valid || categoria.nombre.pristine" class="text-red-600 py-1 text-sm italic">
+                    <span *ngIf="categoria.nombre.errors?.['required']">Este campo es requerido</span>
+                </div> -->
+            </div>
+            <div class="flex justify-end mb-2">
+
+                <div class="mb-6">
+                    <button (click)="siguienteTab()"
+                        class="bg-blue-500 hover:transition-all hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-300"
+                        type="button">
+                        Siguiente
+                    </button>
+                </div>
+                <div class="mb-6 mx-2">
+                    <button
+                        class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </mat-tab>
+
+    <mat-tab *ngFor="let modulo of leassons; let i  = index" label="{{'modulo ' + i }} ">
+        <form class="w-full max-w-l p-3">
+            <div class="flex gap-4 flex-col w-full -mx-3 mb-6">
+
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-first-name-{{i}}">
+                        Nombre del modulo
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="modulo.name"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-first-name-{{i}}" type="text" placeholder="Nombre" [name]="'name' + i">
+                </div>
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-description-{{i}}">
+                        Descripcion del modulo
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="modulo.description"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-description-{{i}}" type="text" placeholder="Descripcion" [name]="'description' + i">
+                </div>
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-url-{{i}}">
+                        Url del Video
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="modulo.video"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-description-{{i}}" type="text" placeholder="url del video" [name]="'video' + i">
+                </div>
+
+                <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        for="grid-exam-{{i}}">
+                        Contiene Examen?
+                    </label>
+                    <!-- Select -->
+                    <select appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="modulo.isQuizz"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-exam-{{i}}" placeholder="Precio" [name]="'exam' + i">
+                        <option value=true>Si</option>
+                        <option value=false>No</option>
+                    </select>
+
+                </div>
+
+                <div class="" *ngIf="modulo.isQuizz">
+                    <div class="" *ngFor="let question of quizz[i]?.questions; let a = index">
+                      <fieldset class="w-full border border-gray-300 p-3 rounded">
+                        <legend class="text-white">Examen</legend>
+                        <div class="w-full mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-pregunta-{{i}}">
+                            Pregunta No. {{a + 1}}
+                          </label>
+                          <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="question.question" class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300" id="grid-pregunta-{{a}}" type="text" placeholder="Cual es la pregunta?" [name]="'pregunta' + a">
+                        </div>
+                        <div class="w-full mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                            Respuesta 1
+                          </label>
+                          <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="question.options.respuesta1" class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300" type="text" placeholder="respuesta 1" [name]="'respuesta' + a">
+                        </div>
+                        <div class="w-full mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                            Respuesta 2
+                          </label>
+                          <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="question.options.respuesta2" class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300" type="text" placeholder="respuesta 2" [name]="'respuesta' + a">
+                        </div>
+                        <div class="w-full mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                            Respuesta 3
+                          </label>
+                          <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="question.options.respuesta3" class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300" type="text" placeholder="respuesta 3" [name]="'respuesta' + a">
+                        </div>
+                        <div class="w-full mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                            Respuesta correcta
+                          </label>
+                          <select appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="question.answer" class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300" id="grid-answer-{{i}}" type="number" placeholder="respuesta correcta" [name]="'respuestaCorrecta' + a">
+                            <option value="1">Respuesta 1</option>
+                            <option value="2">Respuesta 2</option>
+                            <option value="3">Respuesta 3</option>
+                          </select>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+            
+                  <div class="mb-6">
+                    <button (click)="addQuizz(i)" type="button" class="bg-blue-500 hover:transition-all hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                      Agregar Pregunta
+                    </button>
+                  </div>
+            
+
+                <!-- Exam de 3 preguntas con filedset -->
+
+
+
+
+
+
+                <!-- <div [hidden]="categoria.nombre.valid || categoria.nombre.pristine" class="text-red-600 py-1 text-sm italic">
+                    <span *ngIf="categoria.nombre.errors?.['required']">Este campo es requerido</span>
+                </div> -->
+            </div>
+            <div class="flex justify-end mb-2">
+
+                <div class="mb-6">
+                    <button *ngIf="i == leassons.length - 1" (click)="crearCurso()"
+                        class="bg-blue-500 hover:transition-all hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-300"
+                        type="button">
+                        Crear
+                    </button>
+                </div>
+                <div class="mb-6 mx-2">
+                    <button
+                        class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-tab>
+</mat-tab-group>
+
+<input type="file" class="hidden" #inputFile (change)="onFileSelected($event)">

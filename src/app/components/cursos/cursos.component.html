@@ -1,0 +1,35 @@
+<!-- Cursos Card para ver-->
+
+<main class="flex flex-col justify-center items-center mt-10">
+    <div class="text-center flex flex-col gap-10">
+        <div>
+            <h1 class="text-5xl font-bold">Cursos</h1>
+        </div>
+
+    </div>
+    <!-- Nuestros Cursos -->
+    <div class="flex flex-col justify-center items-center gap-5 mt-10">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <!-- Repetir este bloque para cada curso -->
+            <div *ngFor="let curso of cursos" class="bg-[#0d0f14] flex flex-col justify-between rounded-md p-5">
+                <!-- Hover swatch click image curso -->
+
+                <img [src]="curso.image" alt="curso1">
+                <h3 class="text-2xl font-bold mt-2">{{curso.name}} </h3>
+                <p class="text-xl mt
+
+                -2">{{curso.description}} </p>
+                <!-- Precio y Acceder -->
+                <div class="flex justify-end items-center mt-5">
+
+                    <button (click)="verCurso(curso)" class="bg-[#68a726] text-white px-5 py-2 rounded-md">Ver
+                        Curso
+                    </button>
+                </div>
+            </div>
+            <!-- Fin del bloque de curso -->
+        </div>
+    </div>
+
+<app-loading *ngIf="isLoading"></app-loading>

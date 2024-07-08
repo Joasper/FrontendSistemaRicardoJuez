@@ -1,0 +1,39 @@
+<main class="flex flex-col justify-center items-center mt-10">
+    <div class="text-center flex flex-col gap-10">
+        <div>
+            <h1 class="text-5xl font-bold"><span class="highlight">Centro</span> De Entrenamiento Jurídico</h1>
+            <p class="text-xl mt-2">Bienvenido al Centro de Formación Jurídica, un espacio dedicado al aprendizaje</p>
+        </div>
+        <div class="w-full flex flex-col gap-7 items-center justify-center">
+            <h5>¿Qué deseas aprender?</h5>
+            <input [placeholder]="placeholderText" class="p-4 text-base rounded-md border border-[#68a726] bg-[#0d0f14] text-white w-full max-w-xs transition-all duration-300 ease-in-out" />
+        </div>
+    </div>
+    <!-- Nuestros Cursos -->
+    <div class="flex flex-col justify-center items-center gap-5 mt-10">
+        <h2 class="text-3xl font-bold">Nuestros Cursos</h2>
+        <div class="flex flex-col justify-center items-center gap-5 mt-10">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <!-- Repetir este bloque para cada curso -->
+                <div *ngFor="let curso of cursos" class="bg-[#0d0f14] flex flex-col justify-between rounded-md p-5">
+                    <!-- Hover swatch click image curso -->
+    
+                    <img [src]="curso.image" alt="curso1">
+                    <h3 class="text-2xl font-bold mt-2">{{curso.name}} </h3>
+                    <p class="text-xl mt
+    
+                    -2">{{curso.description}} </p>
+                    <!-- Precio y Acceder -->
+                    <div class="flex justify-between items-center mt-5">
+                        <p class="text-xl font-bold">${{curso.price}} </p>
+                        <button class="bg-[#68a726] text-white px-5 py-2 rounded-md">Acceder</button>
+                    </div>    
+                </div>
+                <!-- Fin del bloque de curso -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-loading *ngIf="isLoading"></app-loading>

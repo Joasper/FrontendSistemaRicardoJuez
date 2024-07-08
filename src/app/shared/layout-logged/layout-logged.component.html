@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+  integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="min-h-screen p-9 font-sans bg-gradient-to-r from-black to-[#0f4249] text-white">
+  <!-- Nav -->
+  <nav class="flex flex-col md:flex-row lg:flex-row justify-between items-center">
+    <img class="w-48" src="logo.png" alt="centro juridico logo">
+    <!-- <div class="hidden md:flex gap-5">
+        <a  [routerLink]="[ '/inicio']" class="text-[#0094A8] text-xl" >Inicio</a>
+        <a [routerLink]="[ '/authenticacion']" class="text-[#0094A8] text-xl" >Acceder</a>
+
+    </div> -->
+    <!-- <button class="md:hidden text-[#0094A8]">Menu</button> -->
+    <!-- Droptowm menu user tailwind modern -->
+    <!-- <div class="relative" x-data="{ open: false }">
+        <button class="flex items-center gap-2">
+            <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/port" alt="user">
+            <span class="text-[#0094A8] text-xl">Usuario</span>
+        </button>
+        <div class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300">Perfil</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300">Configuración</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300">Cerrar Sesión</a>
+        </div>
+    </div> -->
+    <div class="relative inline-block text-left">
+      <div>
+        <button (click)="toggleDropdown()" type="button" class="inline-flex items-center w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+          <img src="url_de_la_imagen_del_usuario" alt="Usuario" class="h-6 w-6 rounded-full mr-2"> <!-- Asegúrate de reemplazar url_de_la_imagen_del_usuario con la URL real -->
+          {{user.name}}
+          <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+
+      <!--
+        Dropdown menu, show/hide based on menu state.
+
+        Entering: "transition ease-out duration-100"
+          From: "transform opacity-0 scale-95"
+          To: "transform opacity-100 scale-100"
+        Leaving: "transition ease-in duration-75"
+          From: "transform opacity-100 scale-100"
+          To: "transform opacity-0 scale-95"
+      -->
+      <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" *ngFor="let menu of menus" role="none">
+            <a [routerLink]="[ '/cursos' ]" class="block hover:bg-slate-200 px-4 py-2 text-sm text-gray-700 flex items-center" role="menuitem" tabindex="-1" id="menu-item-0">
+              <i class="{{menu.path}}"></i> {{menu.name}}
+            </a>
+            <a (click)="logout()" class="block hover:bg-slate-200 px-4 py-2 text-sm text-gray-700 flex items-center" role="menuitem" tabindex="-1" id="menu-item-0">
+              <i class="{{menu.path}}"></i> Cerrar Session
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

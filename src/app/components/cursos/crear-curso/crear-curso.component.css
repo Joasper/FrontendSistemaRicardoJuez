@@ -1,0 +1,31 @@
+
+.mat-tab-label{
+    color:white;
+    min-width: 25px !important;
+    padding: 5px;
+       background-color:transparent;
+        color:white;
+        font-weight: 700;
+  }
+
+  .mat-tab-label{
+    min-width: 25px !important;
+    padding: 5px;
+       background-color:transparent;
+        color:white;
+        font-weight: 700;
+}
+
+.mat-mdc-tab .mdc-tab__text-label {
+    color: white !important;
+    display: inline-flex;
+    align-items: center;
+}
+
+.mat-mdc-tab-header-pagination-chevron {
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    height: 8px;
+    width: 8px;
+    border-color: white !important;
+}

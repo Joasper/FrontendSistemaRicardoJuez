@@ -1,0 +1,17 @@
+<div class="min-h-screen p-9 font-sans bg-gradient-to-r from-black to-[#0f4249] text-white">
+    <!-- Nav -->
+    <nav class="flex justify-between items-center">
+        <img class="w-48" src="logo.png" alt="centro juridico logo">
+        <div class="hidden md:flex gap-5">
+            <a  [routerLink]="[ '/public/inicio']" class="text-[#0094A8] text-xl" >Inicio</a>
+            <a [routerLink]="[ '/public/authenticacion']" class="text-[#0094A8] text-xl" >Acceder</a>
+  
+        </div>
+        <button class="md:hidden text-[#0094A8]">Menu</button>
+    </nav>
+
+    <!-- Main -->
+  <div class="">
+    <router-outlet></router-outlet>
+  </div>
+</div>
