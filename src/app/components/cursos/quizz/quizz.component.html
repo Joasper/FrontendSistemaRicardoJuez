@@ -1,0 +1,27 @@
+<fieldset class="p-5 w-full border border-gray-300 rounded">
+    <legend class="text-white text-2xl">Examen</legend>
+    <div class="mt-4" *ngFor="let question of quizz.questions; let i = index">
+      <h2 class="text-xl font-bold text-white">{{question.question}}</h2>
+      <ul class="list-disc list-inside text-white mt-2">
+        <li>
+          <input type="radio" name="{{question.id}}" [id]="question.id + '_respuesta1'" (change)="onAnswerChange(question.id!, '1')" />
+          <label [for]="question.id + '_respuesta1'">{{question.options.respuesta1}}</label>
+        </li>
+        <li>
+          <input type="radio" name="{{question.id}}" [id]="question.id + '_respuesta2'" (change)="onAnswerChange(question.id!, '2')" />
+          <label [for]="question.id + '_respuesta2'">{{question.options.respuesta2}}</label>
+        </li>
+        <li>
+          <input type="radio" name="{{question.id}}" [id]="question.id + '_respuesta3'" (change)="onAnswerChange(question.id!, '3')" />
+          <label [for]="question.id + '_respuesta3'">{{question.options.respuesta3}}</label>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="mt-4 w-full flex justify-end">
+      <button (click)="calcularPuntuacion()" class="bg-blue-500 inline-block justify-end hover:bg-blue-600 text-white py-2 px-4 rounded-md shadow-md">
+        <i class="ri-check-line mr-2"></i> Enviar Examen
+      </button>
+    </div>
+  </fieldset>
+  

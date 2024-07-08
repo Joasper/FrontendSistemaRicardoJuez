@@ -1,4 +1,4 @@
-export const usersMenus =  [
+export const adminMenus =  [
     {
         name: "Crear Nuevo Curso",
         path: "/cursos/nuevo",

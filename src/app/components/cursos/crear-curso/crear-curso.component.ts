@@ -57,6 +57,7 @@ export class CrearCursoComponent {
         description: '',
         isQuizz: false,
         video: '',
+        material: '',
         isFinished: false
       });
     }
@@ -94,6 +95,7 @@ export class CrearCursoComponent {
           name: leasson.name,
           description: leasson.description,
           isFinished: leasson.isFinished,
+          material: leasson.material,
           video: this.extractToSrcFromIframe(leasson.video),
           isQuizz: leasson.isQuizz,
           quizLesson: leasson.quizLesson

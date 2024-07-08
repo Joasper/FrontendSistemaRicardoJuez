@@ -27,6 +27,7 @@ export interface Lesson {
     id?: string | null;
 
     isQuizz?: boolean;
+    material?: string;
 
     courseID?: string;
   // Suponiendo que también tienes una interfaz para `Course`, puedes usarla aquí.

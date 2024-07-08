@@ -21,9 +21,13 @@ export class AuthService {
 
     login(credentials: { document: string, password: string }): Observable<{ token: string; }> {
         return this.http.post<{ token: string; }>(this.API_URL, credentials).pipe(
-            tap(response => {
+            tap((response: any) => {
                 console.log({ response })
+               if(response.success){
                 this.setSession(response.token);
+               }else if(response.token){
+                this.setSession(response.token);
+               }
 
             })
         );

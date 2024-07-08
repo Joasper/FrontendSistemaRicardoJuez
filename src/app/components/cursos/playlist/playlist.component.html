@@ -3,7 +3,7 @@
   integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <div [class]="isSidebarOpen ? 'fixed hidden lg:block md:block lg:static shadow-lg lg:w-64 w-3/4 sm:w-1/2 md:w-1/3 h-full bg-transparent duration-300' : 'fixed lg:static lg:w-20 w-16 h-full bg-gray-900 p-4 duration-300'">
+  <div [class]="isSidebarOpen ? 'fixed hidden lg:block md:hidden lg:static shadow-lg lg:w-64 w-3/4 sm:w-1/2 md:w-1/3 h-full bg-transparent duration-300' : 'fixed lg:static lg:w-20 w-16 h-full bg-gray-900 p-4 duration-300'">
     <div class="pb-4 border-b-gray-100">
       <div [class]="isSidebarOpen ? 'flex flex-col justify-start items-center ml-3' : 'flex items-center ml-1'"></div>
       <div class="overflow-visible z-50">
@@ -23,7 +23,7 @@
             <ng-template #noSubmenu>
               <a (click)="changeCursoActual(menuFormGroup.value)" routerLinkActive="active"
                 class="flex z-20 items-center cursor-pointer py-2 px-4 text-gray-100 hover:bg-gray-950 rounded-md hover:text-gray-100 text-x group-[.active]:bg-gray-800 group-[.active]:text-white relative group">
-                <input type="checkbox" class="mr-2 p-3 cursor-pointer" />
+           
                 <span class="duration-300 text-xl uppercase" *ngIf="isSidebarOpen">{{ menuFormGroup.value.name }}</span>
                 <span *ngIf="!isSidebarOpen"
                   class="absolute -right-5 transform translate-x-full bg-gray-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 z-50 text-lg">{{ menuFormGroup.value?.name }}</span>
@@ -51,23 +51,24 @@
     <div class="mt-4 flex justify-between w-full">
       <h2 class="text-2xl w-full font-bold text-wrap">{{leccionActual.description}}</h2>
     </div>
-    <div class="mt-4 w-full flex justify-end">
+    <div (click)="tomarExamen()" *ngIf="leccionActual.quizLesson !== null" class="mt-4 w-full flex justify-end">
       <button class="bg-blue-500 inline-block justify-end hover:bg-blue-600 text-white py-2 px-4 rounded-md shadow-md">
-        <i class="ri-pencil-line mr-2"></i> Tomar Quizz o Examen
+        <i class="ri-file-list-line mr-2"></i> Tomar Quizz o Examen
       </button>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4" *ngIf="leccionActual.material !== null">
       <h2 class="text-xl font-bold text-white">Materiales Adjuntos</h2>
       <ul class="list-disc list-inside text-white mt-2">
-        <li>Material 1</li>
-        <li>Material 2</li>
-        <li>Material 3</li>
+        <li>Material 1 
+           <a  [href]="leccionActual.material" target="_blank" rel="noopener noreferrer"></a>
+        </li>
+   
       </ul>
     </div>
     <div class="mt-4 w-full flex justify-end">
       <button *ngIf="leccionActual && esUltimaLeccion()" (click)="generarCertificado()" class="bg-blue-500 justify-end hover:bg-blue-600 text-white py-2 px-4 rounded-md shadow-md">
-        <i class="ri-pencil-line mr-2"></i> Descarga tu Certificado
+        <i class="ri-save-line mr-2"></i> Descarga tu Certificado
       </button>
     </div>
 

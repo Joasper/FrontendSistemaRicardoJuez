@@ -121,6 +121,15 @@
                 </div>
 
                 <div class="w-full mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-material-{{i}}">
+                        Url material adjunto
+                    </label>
+                    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="modulo.material"
+                        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                        id="grid-material-{{i}}" type="text" placeholder="url del material" [name]="'material' + i">
+                </div>
+
+                <div class="w-full mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
                         for="grid-exam-{{i}}">
                         Contiene Examen?

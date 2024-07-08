@@ -149,6 +149,10 @@ export class PlaylistComponent {
     })
   }
 
+  tomarExamen() {
+    this.router.navigate(['/cursos/quizz/' + this.leccionActual.quizLesson?.id])
+  }
+
   changeCursoActual(leccion: Lesson) {
     console.log(leccion);
     const findLesson = this.curso.lessons?.find(lesson => lesson.id === leccion.id);
