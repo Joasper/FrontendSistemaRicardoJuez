@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../components/authenticacion/auth.service';
 import { ITokenDecode } from '../../interfaces/ITokenDecode';
-import { adminMenus } from './helpers/adminMenus';
 import { usersMenus } from './helpers/usersMenus';
+import { adminMenus } from './helpers/adminMenus';
+
 
 
 @Component({
@@ -28,13 +29,17 @@ export class LayoutLoggedComponent implements OnInit{
               private router: Router
   ) { }
 
+  ngOnInit(): void {
+    this.user = this.authService.getUser()
+    this.inizialiceMenus()
+  }
 
   inizialiceMenus() {
     console.log(this.user.role)
    switch (this.user.role) {
       case 'Admin':
         this.menus = adminMenus
-        return
+        console.log("SOy admin")
         break;
       case 'User':
         console.log("Hola")
@@ -44,11 +49,9 @@ export class LayoutLoggedComponent implements OnInit{
       default:
         break;
     }
+    console.log(this.menus)
   }
-  ngOnInit(): void {
-    this.user = this.authService.getUser()
-    this.inizialiceMenus()
-  }
+
 
   toggleDropdown() {
     console.log('toggleDropdown')

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
-import { AdminMenus } from './menus';
+
 import { ICurso, Lesson } from '../../../interfaces/ICurso';
 import { CursosService } from '../cursos.service';
 import { SafePipe } from '../../../pipes/safe.pipe';

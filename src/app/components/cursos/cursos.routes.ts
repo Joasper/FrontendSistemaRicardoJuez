@@ -3,6 +3,7 @@ import { CursosComponent } from "./cursos.component";
 import { CrearCursoComponent } from "./crear-curso/crear-curso.component";
 import { PlaylistComponent } from "./playlist/playlist.component";
 import { QuizzComponent } from "./quizz/quizz.component";
+import { CodigoAccesoComponent } from "../codigo-acceso/codigo-acceso.component";
 
 export const routes: Routes = [
     {
@@ -20,6 +21,10 @@ export const routes: Routes = [
     {
         path: "quizz/:id",
         component: QuizzComponent
+    },
+    {
+        path: "codigo-acceso",
+        component: CodigoAccesoComponent
     },
     
     

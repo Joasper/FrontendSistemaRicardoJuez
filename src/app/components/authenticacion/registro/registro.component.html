@@ -1,6 +1,7 @@
 <!-- Registro -->
-<div class="flex justify-center items-center h-screen ">
-    <div class="w-full max-w-md">
+ <div class="">
+  <div  class="flex justify-center items-center h-screen ">
+    <div *ngIf="isAvailableRegister" class="w-full max-w-md">
       <div class="bg-[#1f3133] rounded-lg shadow-lg p-8 m-4">
         <h2 class="text-2xl font-bold text-center text-white mb-6">Registro</h2>
         <form class="space-y-4">
@@ -27,4 +28,19 @@
         </form>
       </div>
     </div>
+
+    <!-- Bloqueo con codigo de acceso -->
+    <div class="" *ngIf="isAvailableRegister === false">
+      <p class="text-white text-2xl">Querido usuario, este panel esta bloqueado con un codigo de acceso que le debe proporcionar el administrador.
+        <br>
+        <br>
+        <strong>Por favor, contacte con el administrador para obtener el codigo de acceso.</strong>
+
+      </p>
+      <p class="text-2xl">Si tiene un codigo de acceso por favor ingreselo acca</p>
+      <input [(ngModel)]="codigo" type="text" class="w-full text-black mt-1 p-2 border border-gray-300 rounded" required>
+      <button (click)="validateCode()" class="w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ingresar</button>
+
+     </div>
    
+ </div>

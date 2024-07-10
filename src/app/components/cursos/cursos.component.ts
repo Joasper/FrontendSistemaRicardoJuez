@@ -23,21 +23,27 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.isLoading = true
+
     this.cursosService.getAll().subscribe({
       next: (cursos) => {
-        this.cursos = cursos.data;
+        if(cursos.success){
+          this.cursos = cursos.data;
+          this.isLoading = false
+        }else if(cursos.success === false){
+          console.error('Error al obtener los cursos', cursos.message);
+          this.isLoading = false
+        }
       },
       error: (error) => {
         console.error('Error al obtener los cursos', error);
+        this.isLoading = false
       }
     })
 
     this.extractToSrcFromIframe('<iframe width="560" height="315" src="https://www.youtube.com/embed/2cOmrptlue0?si=_foX8sTk1uKIve-V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>') 
     this.isLoading = true
 
-    setTimeout(() => {
-      this.isLoading = false
-    }, 4000)
 
   }
 

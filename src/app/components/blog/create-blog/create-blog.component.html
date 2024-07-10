@@ -1,0 +1,81 @@
+<!-- Formulario para crear curso -->
+<form *ngIf="isLoading === false" class="w-full max-w-l p-3">
+    <div class="flex gap-4 flex-col w-full -mx-3 mb-6">
+        <div class="flex items-end gap-3  mb-6">
+            <div class=" mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                    for="grid-first-name">
+                    Imagen
+                </label>
+                <img [src]="url" class="w-32 h-32" alt="Imagen del curso">
+            </div>
+            <!--Boton de carar imagen-->
+            <label for="uploadFile1"
+                class="flex bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-3 outline-none rounded w-max cursor-pointer  font-[sans-serif]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 mr-2 fill-white inline" viewBox="0 0 32 32">
+                    <path
+                        d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                        data-original="#000000" />
+                    <path
+                        d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                        data-original="#000000" />
+                </svg>
+                Upload
+                <button (click)="inputFile.click()" type="button" id='uploadFile1' class="hidden"></button>
+            </label>
+        </div>
+
+        <div class="w-full mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="grid-first-name">
+                Nombre
+            </label>
+            <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="blog.title"
+                class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                id="grid-first-name" type="text" placeholder="nombre del blog" name="Nombre">
+        </div>
+        <div class="w-full mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="grid-first-name">
+                Contenido
+            </label>
+            <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="blog.content"
+                class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                id="grid-first-name" type="text" placeholder="contenido del curso" name="Descripcion">
+        </div>
+        
+        <div class="w-full mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="grid-first-name">
+                Link de descarga
+            </label>
+            <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="blog.dowloadLink"
+                class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+                id="grid-first-name" type="text" placeholder="link de descarga del curso" name="linkDescarga">
+        </div>
+        
+        <!-- <div [hidden]="categoria.nombre.valid || categoria.nombre.pristine" class="text-red-600 py-1 text-sm italic">
+            <span *ngIf="categoria.nombre.errors?.['required']">Este campo es requerido</span>
+        </div> -->
+    </div>
+    <div class="flex justify-end mb-2">
+
+        <div class="mb-6">
+            <button     (click)="crearBlog()"
+                class="bg-blue-500 hover:transition-all hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-300"
+                type="button">
+                Crear Blog
+            </button>
+        </div>
+        <div class="mb-6 mx-2">
+            <button
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<input type="file" class="hidden" #inputFile (change)="onFileSelected($event)">
+<app-loading *ngIf="isLoading"></app-loading>

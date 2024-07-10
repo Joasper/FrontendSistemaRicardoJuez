@@ -4,6 +4,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LayoutLoggedComponent } from './shared/layout-logged/layout-logged.component';
 import { authGuard } from './guards/auth.guard';
 import { notAuthGuard } from './guards/not-auth.guard';
+import { BlogsInicioComponent } from './components/blogs-inicio/blogs-inicio.component';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,10 @@ export const routes: Routes = [
             {
                 path: "inicio",
                 component: InicioComponent
+            },
+            {
+                path: "blogs",
+                loadChildren: () => import('./components/blogs-inicio/blogInicio.routes').then(m => m.routes)
             },
             {
                 path: "authenticacion",
@@ -36,6 +41,11 @@ export const routes: Routes = [
                 loadChildren: () => import('./components/cursos/cursos.routes').then(m => m.routes),
                 canActivate: [authGuard]
             
+            },
+            {
+                path: "blog",
+                loadChildren: () => import('./components/blog/blog.routes').then(m => m.routes),
+                canActivate: [authGuard]
             },
             {
                 path: "**",

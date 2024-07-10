@@ -6,6 +6,8 @@ import { LeccionForm } from '../form/leccion.form';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CursosService } from '../cursos.service';
+import { NotificationService } from '../../../notificacion/notificacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-curso',
@@ -23,7 +25,10 @@ export class CrearCursoComponent {
   quizz: { [moduleIndex: number]: QuizLesson } = {};
   url: string = 'imagepreview.jpg';
 
-  constructor(private cursoService: CursosService) {}
+  constructor(private cursoService: CursosService, 
+              private notificationSv: NotificationService,
+              private router: Router
+  ) {}
 
   siguienteTab() {
     const tabIndex = this.tabGroup.selectedIndex;
@@ -105,13 +110,20 @@ export class CrearCursoComponent {
 
 
     }).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+        if(res.success){
+          this.notificationSv.showSuccessMessage("Curso Creado Correctamente")
+          this.router.navigate(["/cursos"])
+        }else if(res.success === false){
+          this.notificationSv.showErrorMessage(res.error)
+        }
+      },
       error: (err) => console.log(err)
     });
   }
 
   extractToSrcFromIframe(iframe: string) {
-    const src = iframe.split('src="')[1].split('"')[0];
+    const src = iframe?.split('src="')[1].split('"')[0];
     return src;
   }
 

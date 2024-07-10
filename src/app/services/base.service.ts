@@ -17,6 +17,7 @@ export abstract class BaseService<T> {
   protected constructor(protected http: HttpClient) { }
 
   abstract getResourceUrl(): string;
+  
 
   getAll():Observable<NormalizeResponse<T[] >>{
     return this.http.get<NormalizeResponse<T[]>>(this.API_URL).pipe(

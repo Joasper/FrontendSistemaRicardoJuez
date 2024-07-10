@@ -7,6 +7,7 @@ import { NormalizeResponse } from "../../interfaces/normalize-response";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { enviroment } from "../../environments/environment";
+import { ICode } from "../../interfaces/Icode";
 
 @Injectable({ providedIn: 'root' })
 
@@ -31,6 +32,11 @@ export class AuthService {
 
             })
         );
+    }
+
+    validateCode(code: string): Observable<NormalizeResponse <ICode>> {
+        this.API_URL = enviroment.API_URL + "/code-generator";
+        return this.http.delete<NormalizeResponse<ICode>>(this.API_URL + `/${code}`);
     }
     logout() {
       

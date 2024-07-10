@@ -1,0 +1,14 @@
+<div class="w-full mb-6 md:mb-0 p-4">
+    <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+        Codigo de acceso
+    </label>
+    <input appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="codigo"
+        class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
+        id="grid-first-name" type="text" placeholder="codigos de acceso" name="Nombre">
+        <div class="mb-6">
+            <button type="button" (click)="generarCodigo()"
+                class="bg-blue-500 hover:transition-all hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                Generar codigo </button>
+        </div>
+    
+</div>

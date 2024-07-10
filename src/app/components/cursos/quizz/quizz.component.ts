@@ -51,6 +51,11 @@ export class QuizzComponent  implements OnInit {
     const totalQuestions = this.quizz.questions.length;
     const score = (correctAnswers / totalQuestions) * 100;
     console.log(score)
+    if(score < 50) {
+      this.notificationSv.showErrorMessage(`Tu puntuación es ${score}`);
+      
+    }
+
     this.notificationSv.showSuccessMessage(`Tu puntuación es ${score}`);
     this.redirectToCourses();
      return score;
