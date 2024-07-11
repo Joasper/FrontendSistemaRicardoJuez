@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: BlogsInicioComponent
     },
     {
-        path: "leer/:id",
+        path: ":id",
         component: LeerBlogComponent
     },
     {

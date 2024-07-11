@@ -36,6 +36,23 @@ export class CreateBlogComponent {
   }
 
   crearBlog() {
+    if(this.url === null || this.url === undefined || this.url === '') {
+      this.notificationSv.showErrorMessage("Debe seleccionar una imagen")
+      return;
+    }
+    if(this.blog.title === null || this.blog.title === undefined || this.blog.title === '') {
+      this.notificationSv.showErrorMessage("Debe ingresar un titulo")
+      return;
+    }
+    if(this.blog.content === null || this.blog.content === undefined || this.blog.content === '') {
+      this.notificationSv.showErrorMessage("Debe ingresar un contenido")
+      return;
+    }
+    if(this.blog.dowloadLink === null || this.blog.dowloadLink === undefined || this.blog.dowloadLink === '') {
+      this.notificationSv.showErrorMessage("Debe ingresar un link de descarga")
+      return;
+    }
+
     this.isLoading = true;
     this.blogService.create({
       content: this.blog.content!,

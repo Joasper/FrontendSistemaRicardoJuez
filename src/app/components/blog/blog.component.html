@@ -12,18 +12,19 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             <!-- Repetir este bloque para cada curso -->
-            <div *ngFor="let blogs of blog" class="bg-[#0d0f14] flex flex-col justify-between rounded-md p-5">
+            <div *ngFor="let blogs of blog" class="bg-[#0d0f14] flex flex-col gqp-5 justify-between rounded-md p-5">
                 <!-- Hover swatch click image curso -->
 
                 <img [src]="blogs.image" alt="curso1">
-                <h3 class="text-2xl font-bold mt-2">{{blogs.title}} </h3>
-                <p class="text-xl mt
-
-                -2">{{blogs.content}} </p>
+                <h3 class="text-2xl my-3 font-bold mt-2 ">{{blogs.title}} </h3>
+                <div class="flex ">
+                    <p class="text-white text-2xl md:text-2xl lg:text-2xl my-2 ">Fecha: {{blogs.createdAt| date: 'dd/MM/yyyy'}} </p>
+                </div>
+                <p class="text-xl lg:text-xl mt-2 text-justify">{{blogs.content}} </p>
                 <!-- Precio y Acceder -->
                 <div class="flex justify-end items-center mt-5">
 
-                    <button (click)="leerBlog(blogs.id!)"  class="bg-[#68a726] text-white px-5 py-2 rounded-md">Leer Blog
+                    <button (click)="leerBlog(blogs.title!)"  class="bg-[#68a726] text-white px-5 py-2 rounded-md">Leer Blog
                     </button>
                 </div>
             </div>

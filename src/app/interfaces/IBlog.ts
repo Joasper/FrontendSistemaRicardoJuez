@@ -4,4 +4,5 @@ export interface IBlogs {
     content: string
     image: string
     dowloadLink: string
+    createdAt?: string
 }

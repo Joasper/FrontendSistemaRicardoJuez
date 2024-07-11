@@ -51,6 +51,6 @@ export class BlogsInicioComponent {
   }
 
   leerBlog(id: string) {
-    this.router.navigate([`/public/blogs/leer/${id} ` ]);
+    this.router.navigate([`/public/blogs/${id} `.replace(/ /g, '-')]);
   }
 }

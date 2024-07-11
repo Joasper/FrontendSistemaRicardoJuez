@@ -1,14 +1,14 @@
 <div class="min-h-screen p-9 font-sans bg-gradient-to-r from-black to-[#0f4249] text-white">
     <!-- Nav -->
-    <nav class="flex justify-between items-center">
+    <nav class="flex md:gap-3 justify-between gap-3 lg:justify-between md:justify-between items-center">
         <img class="w-48" src="logo.png" alt="centro juridico logo">
-        <div class="hidden md:flex gap-5">
+        <div class=" md:flex flex gap-5">
             <a  [routerLink]="[ '/public/inicio']" class="text-[#0094A8] text-xl" >Inicio</a>
             <a  [routerLink]="[ '/public/blogs']" class="text-[#0094A8] text-xl" >Blogs</a>
             <a [routerLink]="[ '/public/authenticacion']" class="text-[#0094A8] text-xl" >Acceder</a>
   
         </div>
-        <button class="md:hidden text-[#0094A8]">Menu</button>
+        
     </nav>
 
     <!-- Main -->

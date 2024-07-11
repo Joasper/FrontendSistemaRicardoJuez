@@ -49,7 +49,8 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  leerBlog(id: string) {
-    this.router.navigate([`/blog/leer/${id} ` ]);
+  leerBlog(title: string) {
+    console.log(title)
+    this.router.navigate([`/blog/${title} `.replace(/ /g, '-')]);
   }
 }
