@@ -1,18 +1,18 @@
-<div class="min-h-screen p-9 font-sans bg-gradient-to-r from-black to-[#0f4249] text-white">
-    <!-- Nav -->
-    <nav class="flex md:gap-3 justify-between gap-3 lg:justify-between md:justify-between items-center">
-        <img class="w-48" src="logo.png" alt="centro juridico logo">
-        <div class=" md:flex flex gap-5">
-            <a  [routerLink]="[ '/public/inicio']" class="text-[#0094A8] text-xl" >Inicio</a>
-            <a  [routerLink]="[ '/public/blogs']" class="text-[#0094A8] text-xl" >Blogs</a>
-            <a [routerLink]="[ '/public/authenticacion']" class="text-[#0094A8] text-xl" >Acceder</a>
-  
-        </div>
-        
-    </nav>
-
-    <!-- Main -->
+<div class="min-h-screen p-4 sm:p-9 font-sans bg-gradient-to-r from-black to-[#0f4249] text-white">
+  <!-- Nav -->
+  <nav class="flex justify-between items-center gap-3">
+      <img class="w-24 md:w-48" src="logo.png" alt="centro juridico logo">
+      <!-- Botón de menú para pantallas pequeñas -->
+      <!-- <button class="md:hidden text-[#0094A8] text-2xl" (click)="toggleMenu()">☰</button> -->
+      <!-- Menú -->
+      <div  class="md:flex gap-2 flex ml-3">
+          <a [routerLink]="[ '/public/inicio']" class="text-[#0094A8] text-lg">Inicio</a>
+          <a [routerLink]="[ '/public/blogs']" class="text-[#0094A8] text-lg">Blogs</a>
+          <a [routerLink]="[ '/public/authenticacion']" class="text-[#0094A8] text-lg">Acceder</a>
+      </div>
+  </nav>
+  <!-- Contenido principal donde se muestra el componente de router-outlet -->
   <div class="">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   </div>
 </div>

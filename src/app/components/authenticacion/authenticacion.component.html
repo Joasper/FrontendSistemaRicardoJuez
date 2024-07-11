@@ -1,26 +1,25 @@
 <!-- Login tailwind -->
-<div class="flex justify-center items-center h-screen ">
-  <div class="w-full max-w-md">
-    <div class="bg-[#1f3133] rounded-lg shadow-lg p-8 m-4">
-      <h2 class="text-2xl font-bold text-center text-white mb-6">Login</h2>
+<div class="flex justify-center items-center min-h-screen">
+  <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+    <div class="bg-[#1f3133] rounded-lg shadow-lg p-4 sm:p-6 md:p-8 m-2 sm:m-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-center text-white mb-4 sm:mb-6">Login</h2>
       <form class="space-y-4">
         <div>
           <label for="email" class="block text-white">Usuario</label>
-          <input type="email" [(ngModel)]="document" id="email" name="email" placeholder="usuario"  class="w-full mt-1 p-2 border text-black border-gray-300 rounded" required>
+          <input type="email" [(ngModel)]="document" id="email" name="email" placeholder="usuario" class="w-full mt-1 p-2 border text-black border-gray-300 rounded" required>
         </div>
         <div>
           <label for="password" class="block text-white">Contraseña</label>
-          <input type="password" [(ngModel)]="password"  name="password" placeholder="Contraseña" class="w-full mt-1 p-2 border text-black border-gray-300 rounded" required>
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" class="w-full mt-1 p-2 border text-black border-gray-300 rounded" required>
         </div>
         <div class="">
-          <button type="submit" (click)="login()"  class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Iniciar Sesion</button>
+          <button type="submit" (click)="login()" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Iniciar Sesion</button>
         </div>
         <!-- Registro -->
         <div class="text-center">
           <a [routerLink]="[ '/public/authenticacion/register']" class="text-white">¿No tienes cuenta? Registrate</a>
-          
         </div>
       </form>
     </div>
   </div>
- 
+</div>
