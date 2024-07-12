@@ -4,3 +4,13 @@
 @tailwind utilities;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~font-awesome/css/font-awesome.css";
+
+.angular-editor-toolbar .angular-editor-button i {
+    color: black; /* Cambia el color de los iconos a negro */
+  }
+  
+  /* Si es necesario, puedes ajustar otros estilos relacionados con los iconos */
+  .angular-editor-toolbar .angular-editor-button {
+    color: black; /* Cambia el color de los botones a negro */
+  }

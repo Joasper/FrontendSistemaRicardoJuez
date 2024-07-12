@@ -20,7 +20,7 @@
                 <div class="flex ">
                     <p class="text-white text-2xl md:text-2xl lg:text-2xl my-2 ">Fecha: {{blogs.createdAt| date: 'dd/MM/yyyy'}} </p>
                 </div>
-                <p class="text-xl lg:text-xl mt-2 text-justify">{{blogs.content}} </p>
+                <p [innerHTML]="blogs.content" class="text-xl lg:text-xl mt-2 text-justify"> </p>
                 <!-- Precio y Acceder -->
                 <div class="flex justify-end items-center mt-5">
 

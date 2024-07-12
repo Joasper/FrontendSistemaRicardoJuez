@@ -56,7 +56,7 @@ export class CursosComponent implements OnInit {
 
   verCurso(curso: ICurso) {
 
-    this.router.navigate(['/cursos/playlist/' + curso.id])
+    this.router.navigate(['/home/cursos/playlist/' + curso.id])
     console.log(curso)
   }
 

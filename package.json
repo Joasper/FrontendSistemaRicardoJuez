@@ -23,7 +23,10 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@auth0/angular-jwt": "^5.2.0",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
+    "angular-font-awesome": "^3.1.2",
     "express": "^4.19.2",
+    "font-awesome": "^4.7.0",
     "pdfmake": "^0.2.10",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.12.2",
@@ -48,6 +51,7 @@
     "typescript": "~5.4.2"
   },
   "engines": {
- "node": "18.x",
-    "npm": "8.x"}
+    "node": "18.x",
+    "npm": "8.x"
+  }
 }

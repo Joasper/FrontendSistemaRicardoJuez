@@ -39,10 +39,13 @@
                 for="grid-first-name">
                 Contenido
             </label>
-            <textarea appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="blog.content"
+            <!-- <textarea appOnlyAlphaNumeric appStringToUppercase [(ngModel)]="blog.content"
                 class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white transition-all duration-300"
-                id="grid-first-name" type="text" placeholder="contenido del curso" name="Descripcion"></textarea>
-        </div>
+                id="grid-first-name" type="text" placeholder="contenido del curso" name="Descripcion"></textarea> -->
+
+                <angular-editor [(ngModel)]="blog.content" name="areatext" [placeholder]="'Enter text here...'" ></angular-editor>
+
+            </div>
         
         <div class="w-full mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"

@@ -6,11 +6,13 @@ import { NotificationService } from '../../../notificacion/notificacion.service'
 import { BlogServide } from '../blog.service';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 @Component({
   selector: 'app-create-blog',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingComponent],
+  imports: [CommonModule, FormsModule, LoadingComponent, AngularEditorModule],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.css'
 })
@@ -44,10 +46,10 @@ export class CreateBlogComponent {
       this.notificationSv.showErrorMessage("Debe ingresar un titulo")
       return;
     }
-    if(this.blog.content === null || this.blog.content === undefined || this.blog.content === '') {
-      this.notificationSv.showErrorMessage("Debe ingresar un contenido")
-      return;
-    }
+    // if(this.blog.content === null || this.blog.content === undefined || this.blog.content === '') {
+    //   this.notificationSv.showErrorMessage("Debe ingresar un contenido")
+    //   return;
+    // }
     if(this.blog.dowloadLink === null || this.blog.dowloadLink === undefined || this.blog.dowloadLink === '') {
       this.notificationSv.showErrorMessage("Debe ingresar un link de descarga")
       return;
@@ -65,7 +67,7 @@ export class CreateBlogComponent {
         if(response.success){
           this.isLoading = false;
           this.notificationSv.showSuccessMessage("Blog creado correctamente")
-          this.router.navigate(['/blog'])
+          this.router.navigate(['/home/blog'])
         }else if(response.success === false){
           this.isLoading = false;
           this.notificationSv.showErrorMessage(response.message)

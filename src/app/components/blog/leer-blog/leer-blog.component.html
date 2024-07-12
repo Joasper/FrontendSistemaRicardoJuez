@@ -11,8 +11,8 @@
             <p class="text-white text-2xl lg:text-3xl">Fecha: {{blog.createdAt| date: 'dd/MM/yyyy'}} </p>
         </div>
 
-        <div *ngFor="let paragraph of blog.content.split('\n')">
-            <p class="text-white text-2xl text-justify lg:text-3xl">{{ paragraph }}</p>
+        <div >
+            <p [innerHTML]="safeHtml" class="text-white text-2xl text-justify lg:text-3xl"></p>
           </div>
         <div class="mb-6">
         

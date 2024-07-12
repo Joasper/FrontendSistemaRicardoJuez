@@ -1,28 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { IBlogs } from '../../interfaces/IBlog';
 import { LoadingComponent } from '../../shared/loading/loading.component';
 import { NotificationService } from '../../notificacion/notificacion.service';
 import { BlogServide } from './blog.service';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
   imports: [CommonModule, LoadingComponent],
   templateUrl: './blog.component.html',
-  styleUrl: './blog.component.css'
+  styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
 
+  safeHtml: SafeHtml = '';
   isLoading: boolean = false;
-  blog: IBlogs[] = [];
+  blogs: IBlogs[] = [];
 
   constructor(
     private notificationSv: NotificationService,
     private blogService: BlogServide,
-    private router: Router
-  ) { }
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -30,10 +33,10 @@ export class BlogComponent implements OnInit {
     this.blogService.getAll().subscribe({
       next: (blogs) => {
         if (blogs.success) {
-          this.blog = blogs.data.map((blog) => {
+          this.blogs = blogs.data.map((blog) => {
             return {
               ...blog,
-              content: blog.content.substring(0, 100) + '...'
+              content: this.getTruncatedContent(this.setHtmlContent(blog.content)) as string
               };
           });
           this.isLoading = false;
@@ -47,6 +50,16 @@ export class BlogComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+  setHtmlContent(html: string) {
+    return this.safeHtml = this.sanitizer.bypassSecurityTrustHtml(html);
+ 
+  }
+
+  getTruncatedContent(safeHtml: SafeHtml): string {
+    // Convierte el SafeHtml a string y luego aplica substring
+    const htmlString = this.sanitizer.sanitize(SecurityContext.HTML, safeHtml);
+    return htmlString ? htmlString.substring(0, 100) + '...' : '';
   }
 
   leerBlog(title: string) {

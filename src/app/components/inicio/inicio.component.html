@@ -1,4 +1,4 @@
-<main class="flex flex-col justify-center items-center mt-10">
+<main *ngIf="isLoading === false" class="flex flex-col justify-center items-center mt-10">
     <div class="text-center flex flex-col gap-10">
         <div>
             <h1 class="text-5xl font-bold"><span class="highlight">Centro</span> De Entrenamiento Jurídico</h1>
@@ -6,7 +6,7 @@
         </div>
         <div class="w-full flex flex-col gap-7 items-center justify-center">
             <h5>¿Qué deseas aprender?</h5>
-            <input [placeholder]="placeholderText" class="p-4 text-base rounded-md border border-[#68a726] bg-[#0d0f14] text-white w-full max-w-xs transition-all duration-300 ease-in-out" />
+            <input [placeholder]="placeholderText" [(ngModel)]="searchTermCurso" (input)="onSearchChange()"  class="p-4 text-base rounded-md border border-[#68a726] bg-[#0d0f14] text-white w-full max-w-xs transition-all duration-300 ease-in-out" />
         </div>
     </div>
     <!-- Nuestros Cursos -->

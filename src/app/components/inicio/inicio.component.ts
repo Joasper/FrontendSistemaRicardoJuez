@@ -3,16 +3,19 @@ import { ICurso } from '../../interfaces/ICurso';
 import { CursosService } from '../cursos/cursos.service';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from '../../shared/loading/loading.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, LoadingComponent],
+  imports: [CommonModule, LoadingComponent, FormsModule],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
 
+  searchTermCurso: string = '';
+  filteredCursos: ICurso[] = [];
 
   placeholderText = '';
   private phrases = ["Derecho Penal", "Derecho Civil", "Derecho Administrativo"];
@@ -31,12 +34,16 @@ export class InicioComponent {
 
   ngOnInit(): void {
     this.type();
+    this.isLoading = true;
     this.cursosService.getAll().subscribe({
       next: (cursos) => {
         this.cursos = cursos.data;
+        this.isLoading = false;
+        this.filteredCursos =cursos.data
       },
       error: (error) => {
         console.error('Error al obtener los cursos', error);
+        this.isLoading = false;
       }
     })
 
@@ -74,6 +81,17 @@ export class InicioComponent {
       }
     }
 
+  }
+
+  onSearchChange() {
+
+    if(this.searchTermCurso === '') {
+      this.cursos = this.filteredCursos
+      return
+    }else {
+    this.cursos = this.cursos.filter((curso) => curso.name.toLowerCase().includes(this.searchTermCurso.toLowerCase()))
+    }
+    
   }
 
   
