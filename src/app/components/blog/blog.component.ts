@@ -51,6 +51,6 @@ export class BlogComponent implements OnInit {
 
   leerBlog(title: string) {
     console.log(title)
-    this.router.navigate([`/blog/${title} `.replace(/ /g, '-')]);
+    this.router.navigate([`/home/blog/${title} `.replace(/ /g, '-')]);
   }
 }

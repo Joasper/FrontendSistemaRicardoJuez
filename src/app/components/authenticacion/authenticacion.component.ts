@@ -36,7 +36,7 @@ export class AuthenticacionComponent {
 
         if(response.token){
           this.notificacionSv.showSuccessMessage("Bienvenido")
-          this.router.navigate(["/cursos"])
+          this.router.navigate(["/home/cursos"])
         }
       
       },

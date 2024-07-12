@@ -2,12 +2,12 @@ export const usersMenus =  [
     
     {
         name: "Cursos",
-        path: "/cursos",
+        path: "/home/cursos",
         icon: "book",
     },
     {
         name: "Blogs",
-        path: "/blog",
+        path: "/home/blog",
         icon: "booik",
     },
 ]

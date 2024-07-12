@@ -60,7 +60,7 @@ export class LayoutLoggedComponent implements OnInit{
 
   logout() {
     this.authService.logout()
-    this.router.navigate(["/public/authenticacion/login"])
+    this.router.navigate(["/authenticacion/login"])
   }
 
 }
