@@ -4,60 +4,58 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LayoutLoggedComponent } from './shared/layout-logged/layout-logged.component';
 import { authGuard } from './guards/auth.guard';
 import { notAuthGuard } from './guards/not-auth.guard';
-import { BlogsInicioComponent } from './components/blogs-inicio/blogs-inicio.component';
 
 export const routes: Routes = [
     {
-        path: "public",
+        path: "",
         component: LayoutComponent,
         children: [
             {
+                path: "",
+                redirectTo: "inicio",
+                pathMatch: "full"
+            },
+            {
                 path: "inicio",
-                component: InicioComponent
+                component: InicioComponent,
+                canActivate: [notAuthGuard]
             },
             {
                 path: "blogs",
-                loadChildren: () => import('./components/blogs-inicio/blogInicio.routes').then(m => m.routes)
+                loadChildren: () => import('./components/blogs-inicio/blogInicio.routes').then(m => m.routes),
+                canActivate: [notAuthGuard]
             },
             {
                 path: "authenticacion",
                 loadChildren: () => import('./components/authenticacion/authenticacion.routes').then(m => m.routes),
                 canActivate: [notAuthGuard]
-            },
-            {
-                path: "**",
-                redirectTo: "inicio",
-                pathMatch: "full"
-
             }
         ]
     },
     {
-        path: "",
+        path: "home",
         component: LayoutLoggedComponent,
         children: [
+            {
+                path: "",
+                redirectTo: "cursos",
+                pathMatch: "full"
+            },
             {
                 path: "cursos",
                 loadChildren: () => import('./components/cursos/cursos.routes').then(m => m.routes),
                 canActivate: [authGuard]
-            
             },
             {
                 path: "blog",
                 loadChildren: () => import('./components/blog/blog.routes').then(m => m.routes),
                 canActivate: [authGuard]
-            },
-            {
-                path: "**",
-                redirectTo: "cursos",
-                pathMatch: "full"
-
             }
         ]
     },
     {
         path: "**",
-        redirectTo: "",
+        redirectTo: "home",
         pathMatch: "full"
     }
 ];
